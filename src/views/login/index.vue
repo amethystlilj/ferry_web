@@ -148,14 +148,12 @@ export default {
   computed: {
     ...mapGetters(['title', 'logo', 'isLdap', 'isVerifyCode']),
     isVerifyCodeTmp: function() {
-      console.info("isVerifyCode: "+this.isVerifyCode+", isLdap: "+this.isLdap)
       if (this.isVerifyCode) {
         this.getCode()
       }
       return this.isVerifyCode
     },
     isLdapShow: function() {
-      console.info("isVerifyCode1: "+this.isVerifyCode+", isLdap1: "+this.isLdap)
       return this.isLdap
     },
   },
