@@ -90,7 +90,7 @@
                 <img style="height: 48px;width: 100%;border: 1px solid rgba(0,0,0, 0.1);border-radius:5px;" :src="codeUrl" @click="getCode">
               </div>
             </template>
-            <template v-if="isLdapTmp">
+            <template v-if="isLdap">
               <div prop="code" style="width: 100%;float: left;margin-bottom: 13px">
                 <el-checkbox v-model="isLdapTmp">LDAP登陆</el-checkbox>
               </div>
@@ -153,9 +153,6 @@ export default {
       }
       return this.isVerifyCode
     },
-    isLdapTmp: function() {
-      return this.isLdap
-    }
   },
   watch: {
     $route: {
