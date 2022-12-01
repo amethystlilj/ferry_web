@@ -143,8 +143,8 @@ import {
 import {
   GenerateForm,
   MakingForm
-} from '@/components/VueFormMaking'
-import '@/components/VueFormMaking/styles/FormMaking.css'
+} from 'form-making'
+import 'form-making/dist/FormMaking.css'
 
 import ace from 'ace-builds'
 import 'ace-builds/webpack-resolver'

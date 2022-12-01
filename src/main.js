@@ -102,9 +102,8 @@ const i18n = new VueI18n({
   }
 })
 
+import FormMaking from 'form-making'
 // import 'form-making/dist/FormMaking.css'
-// import FormMaking from 'form-making'
-import FormMaking from './components/VueFormMaking/index'
 // Vue.use(FormMaking)
 Vue.use(FormMaking, {
   i18n
