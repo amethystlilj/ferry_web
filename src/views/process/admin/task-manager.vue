@@ -56,7 +56,7 @@
         <el-table-column label="任务类型" prop="classify" :show-overflow-tooltip="true" />
         <el-table-column label="创建者" prop="creator" />
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-button
               v-permisaction="['process:admin:task:edit']"
               size="mini"

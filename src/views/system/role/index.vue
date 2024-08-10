@@ -88,7 +88,7 @@
         <el-table-column label="权限字符" prop="roleKey" :show-overflow-tooltip="true" width="150" />
         <el-table-column label="显示顺序" prop="roleSort" width="100" />
         <el-table-column label="状态" align="center" width="100">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-switch
               v-model="scope.row.status"
               active-value="0"
@@ -98,12 +98,12 @@
           </template>
         </el-table-column>
         <el-table-column label="创建时间" align="center" prop="create_time" width="180">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span>{{ parseTime(scope.row.create_time) }}</span>
           </template>
         </el-table-column>
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-button
               v-permisaction="['system:sysrole:edit']"
               size="mini"
@@ -156,10 +156,12 @@
             <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" />
           </el-form-item>
         </el-form>
-        <div slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="submitForm">确 定</el-button>
-          <el-button @click="cancel">取 消</el-button>
-        </div>
+        <template v-slot:footer>
+          <div class="dialog-footer">
+            <el-button type="primary" @click="submitForm">确 定</el-button>
+            <el-button @click="cancel">取 消</el-button>
+          </div>
+        </template>
       </el-dialog>
 
       <!-- 分配角色数据权限对话框 -->
@@ -193,10 +195,12 @@
             />
           </el-form-item>
         </el-form>
-        <div slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="submitDataScope">确 定</el-button>
-          <el-button @click="cancelDataScope">取 消</el-button>
-        </div>
+        <template v-slot:footer>
+          <div class="dialog-footer">
+            <el-button type="primary" @click="submitDataScope">确 定</el-button>
+            <el-button @click="cancelDataScope">取 消</el-button>
+          </div>
+        </template>
       </el-dialog>
     </el-card>
   </div>

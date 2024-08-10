@@ -1,9 +1,11 @@
 <template>
   <div class="app-container">
     <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>配置信息</span>
-      </div>
+      <template v-slot:header>
+        <div class="clearfix">
+          <span>配置信息</span>
+        </div>
+      </template>
       <div class="text item">
         <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="120px">
           <el-form-item label="系统名称：" prop="name">
@@ -37,9 +39,11 @@
       </div>
     </el-card>
     <el-card class="box-card" style="margin-top: 15px">
-      <div slot="header" class="clearfix">
-        <span>Ldap配置</span>
-      </div>
+      <template v-slot:header>
+        <div class="clearfix">
+          <span>Ldap配置</span>
+        </div>
+      </template>
       <div class="text item">
         <el-alert
           title="Ldap登陆验证通过后，会将用户同步至本地数据库中，请在此配置数据同步的映射关系。单击Ldap字段可编辑，双击可隐藏编辑。"
@@ -65,7 +69,7 @@
             prop="ldap_field_name"
             label="Ldap字段"
           >
-            <template slot-scope="{row, $index}">
+            <template v-slot="{row, $index}">
               <div style="width: 100%; min-height: 24px;" @click="{{ chengenum($index, true) }}" @dblclick="{{ chengenum($index, false) }}">
                 <el-input v-if="editable[$index]" v-model="row.ldap_field_name" />
                 <span v-else>{{ row.ldap_field_name }}</span>
@@ -84,9 +88,6 @@
 <script>
 import { setSettings, getSettings } from '@/api/system/settings'
 export default {
-  components: {
-
-  },
   data() {
     return {
       url: process.env.VUE_APP_BASE_API + '/api/v1/public/uploadFile',

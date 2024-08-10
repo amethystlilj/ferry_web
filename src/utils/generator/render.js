@@ -28,10 +28,10 @@ function vModel(self, dataObject, defaultValue) {
 const componentChild = {
   'el-input': {
     prepend(h, conf, key) {
-      return <template slot='prepend'>{conf[key]}</template>
+      return <template v-slot:prepend>{conf[key]}</template>
     },
     append(h, conf, key) {
-      return <template slot='append'>{conf[key]}</template>
+      return <template v-slot:append>{conf[key]}</template>
     }
   },
   'el-select': {

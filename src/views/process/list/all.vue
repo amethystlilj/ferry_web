@@ -11,19 +11,19 @@
         <el-table-column label="标题" prop="title" :show-overflow-tooltip="true" />
         <el-table-column label="流程" prop="process_name" :show-overflow-tooltip="true" />
         <el-table-column label="当前状态" :show-overflow-tooltip="true">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span>
               {{ scope.row.state_name }}
             </span>
           </template>
         </el-table-column>
         <el-table-column label="当前处理人" :show-overflow-tooltip="true">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span v-if="scope.row.is_end===0">{{ scope.row.principals }}</span>
           </template>
         </el-table-column>
         <el-table-column label="优先级" :show-overflow-tooltip="true" width="120" align="left">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span v-if="scope.row.priority===2">
               <el-tag type="warning">紧急</el-tag>
             </span>
@@ -36,18 +36,18 @@
           </template>
         </el-table-column>
         <el-table-column label="是否结束" :show-overflow-tooltip="true" width="80" align="center">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-tag v-if="scope.row.is_end===0" size="mini" type="success">否</el-tag>
             <el-tag v-else size="mini" type="danger">是</el-tag>
           </template>
         </el-table-column>
         <el-table-column label="创建时间" align="center" prop="create_time" width="180">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span>{{ parseTime(scope.row.create_time) }}</span>
           </template>
         </el-table-column>
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="240">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-button
               v-permisaction="['process:list:all:select']"
               size="mini"

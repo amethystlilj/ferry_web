@@ -1,9 +1,11 @@
 <template>
   <div class="app-container">
     <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>公共信息</span>
-      </div>
+      <template v-slot:header>
+        <div class="clearfix">
+          <span>公共信息</span>
+        </div>
+      </template>
       <div class="text item">
         <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px">
           <el-form-item label="标题:" prop="title" style="margin-bottom: 13px">
@@ -21,9 +23,11 @@
     </el-card>
 
     <el-card class="box-card" style="margin-top: 10px">
-      <div slot="header" class="clearfix">
-        <span>表单信息</span>
-      </div>
+      <template v-slot:header>
+        <div class="clearfix">
+          <span>表单信息</span>
+        </div>
+      </template>
       <div class="text item">
         <template v-for="(tplItem, tplIndex) in processStructureValue.tpls">
           <fm-generate-form

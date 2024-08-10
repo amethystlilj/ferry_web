@@ -119,13 +119,13 @@
             @on-change="handleDataChange"
           >
 
-            <template slot-scope="scope">
+            <template v-slot="scope">
               Width <el-input v-model="scope.model.blank.width" style="width: 100px" />
               Height <el-input v-model="scope.model.blank.height" style="width: 100px" />
             </template>
           </generate-form>
 
-          <template slot="action">
+          <template v-slot:action>
             <el-button type="primary" @click="handleTest">{{ $t('fm.actions.getData') }}</el-button>
             <el-button @click="handleReset">{{ $t('fm.actions.reset') }}</el-button>
           </template>
@@ -153,7 +153,7 @@
 
           <div id="jsoneditor" style="height: 400px;width: 100%;">{{ jsonTemplate }}</div>
 
-          <template slot="action">
+          <template v-slot:action>
             <el-button type="primary" class="json-btn" :data-clipboard-text="jsonCopyValue">{{ $t('fm.actions.copyData') }}</el-button>
           </template>
         </cus-dialog>

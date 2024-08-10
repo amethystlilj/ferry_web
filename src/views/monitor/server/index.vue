@@ -4,9 +4,11 @@
 
       <el-col :span="12" class="card-box">
         <el-card>
-          <div slot="header">
-            <span>服务器信息</span>
-          </div>
+          <template v-slot:header>
+            <div>
+              <span>服务器信息</span>
+            </div>
+          </template>
           <div class="el-table el-table--enable-row-hover el-table--medium">
             <table cellspacing="0" style="width: 100%;">
               <thead>
@@ -36,7 +38,9 @@
 
       <el-col :span="12" class="card-box">
         <el-card>
-          <div slot="header"><span>内存</span></div>
+          <template v-slot:header>
+            <div><span>内存</span></div>
+          </template>
           <div class="el-table el-table--enable-row-hover el-table--medium">
             <table cellspacing="0" style="width: 100%;">
               <thead>
@@ -69,9 +73,11 @@
 
       <el-col :span="12" class="card-box">
         <el-card>
-          <div slot="header">
-            <span>go运行环境</span>
-          </div>
+          <template v-slot:header>
+            <div>
+              <span>go运行环境</span>
+            </div>
+          </template>
           <div class="el-table el-table--enable-row-hover el-table--medium">
             <table cellspacing="0" style="width: 100%;">
               <thead>
@@ -97,9 +103,11 @@
 
       <el-col :span="12" class="card-box">
         <el-card>
-          <div slot="header">
-            <span>磁盘状态</span>
-          </div>
+          <template v-slot:header>
+            <div>
+              <span>磁盘状态</span>
+            </div>
+          </template>
           <div class="el-table el-table--enable-row-hover el-table--medium">
             <table cellspacing="0" style="width: 100%;">
               <thead>

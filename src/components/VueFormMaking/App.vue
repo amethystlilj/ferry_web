@@ -17,10 +17,12 @@
             <span class="el-dropdown-link">
               {{ $route.params.lang === 'zh-CN' ? '简体中文' : 'English' }}<i class="el-icon-arrow-down el-icon--right" />
             </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="zh-CN">简体中文</el-dropdown-item>
-              <el-dropdown-item command="en-US">English</el-dropdown-item>
-            </el-dropdown-menu>
+            <template v-slot:dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item command="zh-CN">简体中文</el-dropdown-item>
+                <el-dropdown-item command="en-US">English</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
           </el-dropdown>
         </div>
 

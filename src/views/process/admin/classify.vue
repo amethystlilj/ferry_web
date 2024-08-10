@@ -55,12 +55,12 @@
         <el-table-column label="名称" prop="name" :show-overflow-tooltip="true" />
         <el-table-column label="创建者" prop="create_name" :show-overflow-tooltip="true" width="150" />
         <el-table-column label="创建时间" align="center" prop="create_time" width="180">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span>{{ parseTime(scope.row.create_time) }}</span>
           </template>
         </el-table-column>
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-button
               v-permisaction="['process:admin:classify:edit']"
               size="mini"
@@ -94,11 +94,13 @@
               <el-input v-model="ruleForm.name" />
             </el-form-item>
           </el-form>
-          <div slot="footer" class="dialog-footer" style="text-align: right">
+        </div>
+        <template v-slot:footer>
+          <div class="dialog-footer" style="text-align: right">
             <el-button type="primary" @click="dialogFormVisibleName===1?submitForm('ruleForm'):editForm('ruleForm')">提交</el-button>
             <el-button @click="open = false">取 消</el-button>
           </div>
-        </div>
+        </template>
       </el-dialog>
     </el-card>
   </div>

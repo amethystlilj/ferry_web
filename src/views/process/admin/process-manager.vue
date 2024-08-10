@@ -57,7 +57,7 @@
         <el-table-column label="创建时间" align="center" prop="create_time" width="180" />
         <el-table-column label="更新时间" align="center" prop="update_time" width="180" />
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-button
               v-permisaction="['process:admin:manager:clone']"
               size="mini"

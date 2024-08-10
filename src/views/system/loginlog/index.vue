@@ -70,7 +70,7 @@
         <el-table-column label="操作系统" align="center" prop="os" />
         <el-table-column label="操作信息" width="120" align="center" prop="msg" />
         <el-table-column label="登录日期" align="center" prop="loginTime" width="180">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span>{{ parseTime(scope.row.loginTime) }}</span>
           </template>
         </el-table-column>

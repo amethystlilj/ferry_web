@@ -7,10 +7,12 @@ let someSpanIsNot24
 export function dialogWrapper(str) {
   return `<el-dialog v-bind="$attrs" v-on="$listeners" @open="onOpen" @close="onClose" title="Dialog Titile">
     ${str}
-    <div slot="footer">
-      <el-button @click="close">取消</el-button>
-      <el-button type="primary" @click="handelConfirm">确定</el-button>
-    </div>
+    <template v-slot:footer>
+        <div>
+          <el-button @click="close">取消</el-button>
+          <el-button type="primary" @click="handelConfirm">确定</el-button>
+        </div>
+    </template>
   </el-dialog>`
 }
 
@@ -277,10 +279,10 @@ function attrBuilder(el) {
 function buildElInputChild(conf) {
   const children = []
   if (conf.prepend) {
-    children.push(`<template slot="prepend">${conf.prepend}</template>`)
+    children.push(`<template v-slot:prepend>${conf.prepend}</template>`)
   }
   if (conf.append) {
-    children.push(`<template slot="append">${conf.append}</template>`)
+    children.push(`<template v-slot:append>${conf.append}</template>`)
   }
   return children.join('\n')
 }

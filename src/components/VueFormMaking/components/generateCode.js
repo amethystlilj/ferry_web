@@ -68,7 +68,7 @@ export default function(data) {
 
   for (let i = 0; i < blankList.length; i++) {
     blankTemplate += `
-        <template slot="${blankList[i].name}" slot-scope="scope">
+        <template v-slot:[${blankList[i].name}]="scope">
           <!-- ${blankList[i].label} -->
           <!-- use v-model="scope.model.${blankList[i].name}" to bind data -->
         </template>

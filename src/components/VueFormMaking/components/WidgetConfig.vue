@@ -176,13 +176,13 @@
               <div class="form-request-method-title" style="margin-bottom: 6px">字段映射</div>
               <div class="form-request-method-content">
                 <el-input v-model="data.options.props.value" size="mini" style="">
-                  <template slot="prepend">{{ $t('fm.config.widget.value') }}</template>
+                  <template v-slot:prepend>{{ $t('fm.config.widget.value') }}</template>
                 </el-input>
                 <el-input v-model="data.options.props.label" size="mini" style="">
-                  <template slot="prepend">{{ $t('fm.config.widget.label') }}</template>
+                  <template v-slot:prepend>{{ $t('fm.config.widget.label') }}</template>
                 </el-input>
                 <el-input v-if="data.type === 'cascader'" v-model="data.options.props.children" size="mini" style="">
-                  <template slot="prepend">{{ $t('fm.config.widget.childrenOption') }}</template>
+                  <template v-slot:prepend>{{ $t('fm.config.widget.childrenOption') }}</template>
                 </el-input>
               </div>
             </div>
@@ -191,16 +191,16 @@
         <template v-else-if="data.options.remote">
           <div>
             <el-input v-model="data.options.remoteFunc" size="mini" style="">
-              <template slot="prepend">{{ $t('fm.config.widget.remoteFunc') }}</template>
+              <template v-slot:prepend>{{ $t('fm.config.widget.remoteFunc') }}</template>
             </el-input>
             <el-input v-model="data.options.props.value" size="mini" style="">
-              <template slot="prepend">{{ $t('fm.config.widget.value') }}</template>
+              <template v-slot:prepend>{{ $t('fm.config.widget.value') }}</template>
             </el-input>
             <el-input v-model="data.options.props.label" size="mini" style="">
-              <template slot="prepend">{{ $t('fm.config.widget.label') }}</template>
+              <template v-slot:prepend>{{ $t('fm.config.widget.label') }}</template>
             </el-input>
             <el-input v-if="data.type === 'cascader'" v-model="data.options.props.children" size="mini" style="">
-              <template slot="prepend">{{ $t('fm.config.widget.childrenOption') }}</template>
+              <template v-slot:prepend>{{ $t('fm.config.widget.childrenOption') }}</template>
             </el-input>
           </div>
         </template>
@@ -231,7 +231,7 @@
             </el-radio-group>
           </template>
 
-          <template v-if="data.type=='checkbox' || (data.type=='select' && data.options.multiple)">
+          <template v-if="data.type==='checkbox' || (data.type==='select' && data.options.multiple)">
             <el-checkbox-group v-model="data.options.defaultValue">
 
               <draggable
@@ -258,12 +258,13 @@
 
           <template v-if="data.type === 'cascader'">
             <el-tree
+              v-slot="{ node, data }"
               :data="data.options.options"
               node-key="id"
               default-expand-all
               :expand-on-click-node="false"
             >
-              <span slot-scope="{ node, data }" class="custom-tree-node">
+              <span class="custom-tree-node">
                 <span style="font-size: 12px;">{{ node.label }}</span>
                 <span>
                   <el-button
@@ -599,10 +600,12 @@
           </el-form-item>
         </el-form>
       </div>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="cascaderDialog = false">取 消</el-button>
-        <el-button type="primary" @click="operatingStatus==='add'?appendCascaderData():cascaderDialog = false">确 定</el-button>
-      </span>
+      <template v-slot:footer>
+        <span class="dialog-footer">
+          <el-button @click="cascaderDialog = false">取 消</el-button>
+          <el-button type="primary" @click="operatingStatus==='add'?appendCascaderData():cascaderDialog = false">确 定</el-button>
+        </span>
+      </template>
     </el-dialog>
   </div>
 </template>

@@ -2,7 +2,7 @@
   <div class="rank">
     <h4 class="title">
       {{ title }}
-      <el-tooltip slot="action" class="item" effect="dark" content="工单的处理耗时，注意：仅统计处理节点，审批节点暂未统计。" placement="top-end">
+      <el-tooltip class="item" effect="dark" content="工单的处理耗时，注意：仅统计处理节点，审批节点暂未统计。" placement="top-end">
         <i class="el-icon-warning-outline" style="float: right" />
       </el-tooltip>
     </h4>

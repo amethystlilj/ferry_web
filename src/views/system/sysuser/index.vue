@@ -102,7 +102,7 @@
             <el-table-column label="部门" align="center" prop="deptName" :show-overflow-tooltip="true" />
             <el-table-column label="手机号码" align="center" prop="phone" width="120" />
             <el-table-column label="状态" width="68" align="center">
-              <template slot-scope="scope">
+              <template v-slot="scope">
                 <el-switch
                   v-model="scope.row.status"
                   active-value="0"
@@ -112,7 +112,7 @@
               </template>
             </el-table-column>
             <el-table-column label="创建时间" align="center" prop="create_time" width="165">
-              <template slot-scope="scope">
+              <template v-slot="scope">
                 <span>{{ parseTime(scope.row.create_time) }}</span>
               </template>
             </el-table-column>
@@ -122,7 +122,7 @@
               width="220"
               class-name="small-padding fixed-width"
             >
-              <template slot-scope="scope">
+              <template v-slot="scope">
                 <el-button
                   v-permisaction="['system:sysuser:edit']"
                   size="mini"
@@ -175,7 +175,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item v-if="form.userId == undefined" label="用户密码" prop="password" style="width: 90%">
+            <el-form-item v-if="form.userId === undefined" label="用户密码" prop="password" style="width: 90%">
               <el-input v-model="form.password" placeholder="请输入用户密码" type="password" />
             </el-form-item>
           </el-col>
@@ -197,7 +197,7 @@
                   :key="item.roleId"
                   :label="item.roleName"
                   :value="item.roleId"
-                  :disabled="item.status == 1"
+                  :disabled="item.status === 1"
                 />
               </el-select>
             </el-form-item>
@@ -233,10 +233,12 @@
           </el-col>
         </el-row>
       </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
-      </div>
+      <template v-slot:footer>
+        <div class="dialog-footer">
+          <el-button type="primary" @click="submitForm">确 定</el-button>
+          <el-button @click="cancel">取 消</el-button>
+        </div>
+      </template>
     </el-dialog>
 
     <!-- 用户导入对话框 -->
@@ -258,16 +260,20 @@
           将文件拖到此处，或
           <em>点击上传</em>
         </div>
-        <div slot="tip" class="el-upload__tip">
-          <el-checkbox v-model="upload.updateSupport" />是否更新已经存在的用户数据
-          <el-link type="info" style="font-size:12px" @click="importTemplate">下载模板</el-link>
-        </div>
-        <div slot="tip" class="el-upload__tip" style="color:red">提示：仅允许导入“xls”或“xlsx”格式文件！</div>
+        <template v-slot:tip>
+          <div class="el-upload__tip">
+            <el-checkbox v-model="upload.updateSupport" />是否更新已经存在的用户数据
+            <el-link type="info" style="font-size:12px" @click="importTemplate">下载模板</el-link>
+          </div>
+          <div class="el-upload__tip" style="color:red">提示：仅允许导入“xls”或“xlsx”格式文件！</div>
+        </template>
       </el-upload>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitFileForm">确 定</el-button>
-        <el-button @click="upload.open = false">取 消</el-button>
-      </div>
+      <template v-slot:footer>
+        <div class="dialog-footer">
+          <el-button type="primary" @click="submitFileForm">确 定</el-button>
+          <el-button @click="upload.open = false">取 消</el-button>
+        </div>
+      </template>
     </el-dialog>
   </div>
 </template>

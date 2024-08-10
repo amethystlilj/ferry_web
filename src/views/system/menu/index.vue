@@ -33,20 +33,20 @@
       >
         <el-table-column prop="title" label="菜单名称" :show-overflow-tooltip="true" width="180px" />
         <el-table-column prop="icon" label="图标" align="center" width="100px">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <svg-icon :icon-class="scope.row.icon" />
           </template>
         </el-table-column>
         <el-table-column prop="sort" label="排序" width="60px" />
         <el-table-column prop="permission" label="权限标识" :show-overflow-tooltip="true" />
         <el-table-column prop="path" label="路径" :show-overflow-tooltip="true">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span v-if="scope.row.menuType=='A'">{{ scope.row.path }}</span>
             <span v-else>{{ scope.row.component }}</span>
           </template>
         </el-table-column>
         <el-table-column prop="visible" label="可见" :formatter="visibleFormat" width="80">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-tag
               :type="scope.row.visible === '1' ? 'danger' : 'success'"
               disable-transitions
@@ -54,12 +54,12 @@
           </template>
         </el-table-column>
         <el-table-column label="创建时间" align="center" prop="create_time" width="180">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span>{{ parseTime(scope.row.create_time) }}</span>
           </template>
         </el-table-column>
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="180">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-button
               v-permisaction="['system:sysmenu:edit']"
               size="mini"
@@ -140,16 +140,17 @@
                 @show="$refs['iconSelect'].reset()"
               >
                 <IconSelect ref="iconSelect" @selected="selected" />
-                <el-input slot="reference" v-model="form.icon" placeholder="点击选择图标" readonly>
-                  <svg-icon
-                    v-if="form.icon"
-                    slot="prefix"
-                    :icon-class="form.icon"
-                    class="el-input__icon"
-                    style="height: 32px;width: 16px;"
-                  />
-                  <i v-else slot="prefix" class="el-icon-search el-input__icon" />
-                </el-input>
+                <template v-slot:reference>
+                  <el-input v-model="form.icon" v-slot:prefix placeholder="点击选择图标" readonly>
+                    <svg-icon
+                      v-if="form.icon"
+                      :icon-class="form.icon"
+                      class="el-input__icon"
+                      style="height: 32px;width: 16px;"
+                    />
+                    <i v-else class="el-icon-search el-input__icon" />
+                  </el-input>
+                </template>
               </el-popover>
             </el-form-item>
           </el-col>
@@ -198,10 +199,12 @@
           </el-col>
         </el-row>
       </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
-      </div>
+      <template v-slot:footer>
+        <div class="dialog-footer">
+          <el-button type="primary" @click="submitForm">确 定</el-button>
+          <el-button @click="cancel">取 消</el-button>
+        </div>
+      </template>
     </el-dialog>
   </div>
 </template>

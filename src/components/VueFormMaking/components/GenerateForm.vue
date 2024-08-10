@@ -63,10 +63,10 @@
                 fixed
                 width="50"
               >
-                <template slot="header">
+                <template v-slot:header>
                   <i style="font-size: 25px; color: #409EFF;cursor:pointer;" class="el-icon-circle-plus" @click="addSubformCol(item)" />
                 </template>
-                <template slot-scope="scope">
+                <template v-slot="scope">
                   <i style="font-size: 25px; color: red" class="el-icon-remove" @click="delSubformCol(item, scope.$index)" />
                 </template>
               </el-table-column>
@@ -79,7 +79,7 @@
                     :label="v.name"
                     min-width="250"
                   >
-                    <template slot-scope="scope">
+                    <template v-slot="scope">
                       <genetate-form-item
                         :prop-value="item.model + '.' + scope.$index + '.' + v.model"
                         :preview="preview"

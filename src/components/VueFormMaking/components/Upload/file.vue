@@ -16,13 +16,16 @@
     >
       <div v-if="!preview">
         <el-button size="small" type="primary">点击上传</el-button>
-        <div slot="tip" class="el-upload__tip">{{ element.options.tip }}</div>
       </div>
+      <template v-slot:tip>
+        <div v-if="!preview" class="el-upload__tip">{{ element.options.tip }}</div>
+      </template>
     </el-upload>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'FileUpload',
   // eslint-disable-next-line vue/require-prop-types

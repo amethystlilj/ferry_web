@@ -41,7 +41,7 @@
         <el-table-column prop="deptName" label="部门名称" />
         <el-table-column prop="sort" label="排序" width="200" />
         <el-table-column prop="status" label="状态" width="100">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-tag
               :type="scope.row.status === '1' ? 'danger' : 'success'"
               disable-transitions
@@ -49,12 +49,12 @@
           </template>
         </el-table-column>
         <el-table-column label="创建时间" align="center" prop="create_time" width="200">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span>{{ parseTime(scope.row.create_time) }}</span>
           </template>
         </el-table-column>
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-button
               v-permisaction="['system:sysdept:edit']"
               size="mini"
@@ -142,10 +142,12 @@
           </el-col>
         </el-row>
       </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
-      </div>
+      <template v-slot:footer>
+        <div class="dialog-footer">
+          <el-button type="primary" @click="submitForm">确 定</el-button>
+          <el-button @click="cancel">取 消</el-button>
+        </div>
+      </template>
     </el-dialog>
   </div>
 </template>

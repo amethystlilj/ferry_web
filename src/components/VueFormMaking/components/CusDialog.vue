@@ -14,18 +14,19 @@
       <slot />
     </span>
 
-    <span
-      v-if="action"
-      slot="footer"
-      v-loading="loading"
-      class="dialog-footer"
-      :element-loading-text="loadingText"
-    >
-      <slot name="action">
-        <el-button @click="close">{{ $t('fm.actions.cancel') }}</el-button>
-        <el-button type="primary" @click="submit">{{ $t('fm.actions.confirm') }}</el-button>
-      </slot>
-    </span>
+    <template v-slot:footer>
+      <span
+        v-if="action"
+        v-loading="loading"
+        class="dialog-footer"
+        :element-loading-text="loadingText"
+      >
+        <slot name="action">
+          <el-button @click="close">{{ $t('fm.actions.cancel') }}</el-button>
+          <el-button type="primary" @click="submit">{{ $t('fm.actions.confirm') }}</el-button>
+        </slot>
+      </span>
+    </template>
   </el-dialog>
 </template>
 

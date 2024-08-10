@@ -112,7 +112,7 @@
                   generate-json
                   :advance-fields="['editor', 'imgupload', 'file', 'subform', 'cascader']"
                 >
-                  <template slot="action" />
+                  <template v-slot:action />
                 </fm-making-form>
               </div>
             </el-form-item>

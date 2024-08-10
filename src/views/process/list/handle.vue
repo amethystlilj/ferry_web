@@ -35,9 +35,11 @@
       />
 
       <el-card class="box-card" style="margin-top: 15px">
-        <div slot="header" class="clearfix">
-          <span>公共信息</span>
-        </div>
+        <template v-slot:header>
+          <div class="clearfix">
+            <span>公共信息</span>
+          </div>
+        </template>
         <div class="text item">
           <el-form label-width="100px">
             <el-row>
@@ -65,9 +67,11 @@
       </el-card>
 
       <el-card class="box-card" style="margin-top: 15px;">
-        <div slot="header" class="clearfix">
-          <span>表单信息</span>
-        </div>
+        <template v-slot:header>
+          <div class="clearfix">
+            <span>表单信息</span>
+          </div>
+        </template>
         <div class="text item">
           <template v-for="(tplItem, tplIndex) in processStructureValue.tpls">
             <fm-generate-form
@@ -130,9 +134,11 @@
       </el-card>
 
       <el-card class="box-card" style="margin-top: 15px">
-        <div slot="header" class="clearfix">
-          <span>工单流转历史</span>
-        </div>
+        <template v-slot:header>
+          <div class="clearfix">
+            <span>工单流转历史</span>
+          </div>
+        </template>
         <div class="text item">
           <el-table
             :data="circulationHistoryList"

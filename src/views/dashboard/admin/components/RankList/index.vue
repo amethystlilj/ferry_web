@@ -2,7 +2,7 @@
   <div class="rank">
     <h4 class="title">
       {{ title }}
-      <el-tooltip slot="action" class="item" effect="dark" content="最常被提交的流程排行及提交的次数。" placement="top-end">
+      <el-tooltip class="item" effect="dark" content="最常被提交的流程排行及提交的次数。" placement="top-end">
         <i class="el-icon-warning-outline" style="float: right" />
       </el-tooltip>
     </h4>

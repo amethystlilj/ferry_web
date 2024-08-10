@@ -74,7 +74,7 @@
         <el-table-column label="岗位名称" align="center" prop="postName" />
         <el-table-column label="岗位排序" align="center" prop="sort" />
         <el-table-column label="状态" align="center" prop="status">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-tag
               :type="scope.row.status === '1' ? 'danger' : 'success'"
               disable-transitions
@@ -82,12 +82,12 @@
           </template>
         </el-table-column>
         <el-table-column label="创建时间" align="center" prop="create_time" width="180">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <span>{{ parseTime(scope.row.create_time) }}</span>
           </template>
         </el-table-column>
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-button
               v-permisaction="['system:syspost:edit']"
               size="mini"
@@ -130,10 +130,12 @@
           <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" />
         </el-form-item>
       </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
-      </div>
+      <template v-slot:footer>
+        <div class="dialog-footer">
+          <el-button type="primary" @click="submitForm">确 定</el-button>
+          <el-button @click="cancel">取 消</el-button>
+        </div>
+      </template>
     </el-dialog>
   </div>
 </template>

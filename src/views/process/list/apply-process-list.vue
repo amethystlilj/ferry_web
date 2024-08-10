@@ -25,11 +25,13 @@
           <div style="margin-bottom: 15px;">
             <template v-for="(buttonItem, buttonIndex) in item.process_list">
               <el-tooltip :key="buttonItem.id" effect="dark" placement="top">
-                <div slot="content">
-                  {{ buttonItem.name }}
-                  <br>
-                  {{ buttonItem.remarks }}
-                </div>
+                <template v-slot:content>
+                  <div>
+                    {{ buttonItem.name }}
+                    <br>
+                    {{ buttonItem.remarks }}
+                  </div>
+                </template>
                 <div
                   class="workflow-classify-div"
                   :style="(buttonIndex + 1) % 5 === 0 ? {'padding-right': 0} : {'padding-right': '12px'}"
