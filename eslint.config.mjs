@@ -1,6 +1,7 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginVue from "eslint-plugin-vue";
+import babelParser from "@babel/eslint-parser";
 
 export default [
   {
@@ -21,9 +22,7 @@ export default [
       ecmaVersion: 2015,
       sourceType: "module",
 
-      parserOptions: {
-        parser: "babel-eslint",
-      },
+      parser: babelParser
     },
 
     rules: {

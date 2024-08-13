@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 import resize from '../mixins/resize'
 
 export default {
@@ -61,7 +61,7 @@ export default {
       this.chart = echarts.init(this.$el, 'macarons')
       this.setOptions(this.statisticsData)
     },
-    setOptions({ expectedData, actualData } = {}) {
+    setOptions(data) {
       this.chart.setOption({
         title: {
           textStyle: {
@@ -84,7 +84,7 @@ export default {
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: this.statisticsData.datetime
+          data: data.datetime
         },
         yAxis: {
           type: 'value'
@@ -93,17 +93,17 @@ export default {
           {
             name: '工单总数',
             type: 'line',
-            data: this.statisticsData.total
+            data: data.total
           },
           {
             name: '未结束',
             type: 'line',
-            data: this.statisticsData.processing
+            data: data.processing
           },
           {
             name: '已结束',
             type: 'line',
-            data: this.statisticsData.overs
+            data: data.overs
           }
         ]
       })

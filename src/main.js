@@ -36,8 +36,8 @@ import VueEditor from 'vue2-editor'
 Vue.use(VueEditor)
 
 import iconPicker from 'e-icon-picker'
-import 'e-icon-picker/dist/index.css'// 基础样式
-import 'e-icon-picker/dist/main.css'
+import 'e-icon-picker/lib/index.css'// 基础样式
+import 'e-icon-picker/lib/symbol.js'
 import enLocale from 'element-ui/lib/locale/lang/en'
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN' // fontAwesome 图标库样式
 Vue.use(iconPicker)
