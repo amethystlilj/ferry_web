@@ -16,6 +16,7 @@ const name = defaultSettings.title || 'ferry' // page title
 const port = process.env.port || process.env.npm_config_port || 9527 // dev port
 
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -34,13 +35,16 @@ module.exports = {
   devServer: {
     port: port,
     open: true,
-    overlay: {
-      warnings: false,
-      errors: true
+    client: {
+      overlay: {
+        warnings: false,
+        errors: true
+      }
     }
   },
   configureWebpack: {
     plugins: [
+      new NodePolyfillPlugin(),
       new MonacoWebpackPlugin()
     ],
     name: name,

@@ -1,4 +1,4 @@
-import variables from '@/styles/element-variables.scss'
+import variables from '@/styles/element-variables.module.scss'
 import defaultSettings from '@/settings'
 import { getSettings } from '@/api/system/settings'
 
